@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 
 import * as S from './styles';
 import { useFileStore } from '@Store/useFileStore';
+import { AuthenticationApi } from '@/api/AuthenticationApi';
 
 
 export const FileExplorerFooter = () => {
@@ -27,6 +28,10 @@ export const FileExplorerFooter = () => {
           </span>
         </>
       )}
+
+      <button type='button' onClick={AuthenticationApi.signOut}>
+        Log Out
+      </button>
     </S.Container>
   );
 };

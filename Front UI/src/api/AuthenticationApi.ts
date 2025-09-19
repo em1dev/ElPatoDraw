@@ -36,9 +36,14 @@ const useSession = () => {
   return session;
 };
 
+const signOut = () => {
+  client.auth.signOut();
+};
+
 export const AuthenticationApi = {
   getToken,
   getUser,
   useSession,
-  supabaseClient: client
+  supabaseClient: client,
+  signOut
 };

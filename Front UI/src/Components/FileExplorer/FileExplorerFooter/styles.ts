@@ -10,4 +10,12 @@ export const Container = styled.div`
   gap: 0.5em;
 
   border-top: solid 1px #ffffff24;
+
+  > button {
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.foreground };
+    cursor: pointer;
+  }
 `;
