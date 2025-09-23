@@ -97,7 +97,7 @@ export const ActionToolbar = () => {
 
       <S.LinkButton
         title='Support me :3'
-        href='https://ko-fi.com/patitodev'
+        href='https://ko-fi.com/emydev'
         target='_blank'
       >
         <Icon icon='mingcute:hand-heart-line' />
@@ -105,7 +105,7 @@ export const ActionToolbar = () => {
 
       <S.LinkButton
         title='Source code'
-        href='https://github.com/PatitoDev/ElPatoDraw'
+        href='https://github.com/Em1Dev/ElPatoDraw'
         target='_blank'
       >
         <Icon icon='mingcute:code-line' />
