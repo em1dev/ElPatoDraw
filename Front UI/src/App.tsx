@@ -5,6 +5,7 @@ import { AuthenticationApi } from '@Api/AuthenticationApi';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from './theme';
 import { isProd } from './settings';
+import { DomainChangeWarningModal } from './Pages/HomePage/DomainChangeWarningModal';
 
 function App() {
   const { isLoading, session } = AuthenticationApi.useSession();
@@ -14,6 +15,7 @@ function App() {
   if (!session) {
     return (
       <ThemeProvider theme={mainTheme} >
+        <DomainChangeWarningModal />
         <h1 style={{ fontSize: '3em', fontWeight: 'bold', textAlign: 'center', margin: '1em' }}>
           El Pato Draw
         </h1>
@@ -40,6 +42,7 @@ function App() {
 
   return (
     <ThemeProvider theme={mainTheme}>
+      <DomainChangeWarningModal />
       <div style={{ height: '100vh', width: '100vw' }}>
         <HomePage />
       </div>
