@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { mainTheme } from './theme';
 import { isProd } from './settings';
 import { DomainChangeWarningModal } from './Pages/HomePage/DomainChangeWarningModal';
+import { DefaultColorStyle, Tldraw } from 'tldraw';
 
 function App() {
   const { isLoading, session } = AuthenticationApi.useSession();
@@ -15,26 +16,46 @@ function App() {
   if (!session) {
     return (
       <ThemeProvider theme={mainTheme} >
-        <DomainChangeWarningModal />
-        <h1 style={{ fontSize: '3em', fontWeight: 'bold', textAlign: 'center', margin: '1em' }}>
-          El Pato Draw
-        </h1>
-        <div style={{
-          height: '50vh',
-          maxWidth: '30em',
+        <div style={{ 
+          position: 'absolute',
           width: '100%',
-          margin: 'auto'
+          height: '100%',
+          top: 0
         }} >
-          <Auth
-            redirectTo={isProd ? undefined : 'http://localhost:5173'}
-            providers={['twitch']}
-            supabaseClient={AuthenticationApi.supabaseClient}
-            appearance={{
-              theme: ThemeSupa
+          <Tldraw
+            inferDarkMode
+            hideUi
+            onMount={(e) => { 
+              e.setStyleForNextShapes(DefaultColorStyle, 'light-violet');
+              e.setCurrentTool('draw');
             }}
-            theme='dark'
-          >
-          </Auth>
+          />
+        </div>
+        <DomainChangeWarningModal />
+        <div>
+          <div style={{
+            zIndex: 1,
+            position: 'relative',
+            height: '50vh',
+            maxWidth: '30em',
+            width: '100%',
+            margin: 'auto'
+          }} >
+            <h1 style={{ fontSize: '3em', fontWeight: 'bold', textAlign: 'center', margin: '1em' }}>
+            El Pato Draw
+            </h1>
+
+            <Auth
+              redirectTo={isProd ? undefined : 'http://localhost:5173'}
+              providers={['twitch']}
+              supabaseClient={AuthenticationApi.supabaseClient}
+              appearance={{
+                theme: ThemeSupa
+              }}
+              theme='dark'
+            >
+            </Auth>
+          </div>
         </div>
       </ThemeProvider>
     );
