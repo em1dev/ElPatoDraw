@@ -18,7 +18,7 @@ r2_buckets = [
 ]
 
 [env.production]
-vars = { ALLOWED_DOMAINS = "https://elpatodraw.com" }
+vars = { ALLOWED_DOMAINS = "https://draw.elpato.dev" }
 
 name = "elpatodraw-worker"
 
