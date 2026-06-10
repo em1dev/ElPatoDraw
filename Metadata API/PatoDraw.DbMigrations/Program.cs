@@ -13,7 +13,7 @@ var services = new ServiceCollection()
     .ConfigureRunner(rb =>
         rb
         .AddPostgres()
-        .WithGlobalConnectionString(configuration.GetConnectionString("PatoDrawDbConnection"))
+        .WithGlobalConnectionString(configuration.GetConnectionString("MetadataDbConnection"))
         .ScanIn(typeof(_01_Init).Assembly)
         .For
         .Migrations()
@@ -28,7 +28,8 @@ var runner = services.GetRequiredService<IMigrationRunner>();
 if (args.FirstOrDefault() == "-r")
 {
     runner.Rollback(1);
-} else
+}
+else
 {
     runner.ListMigrations();
     runner.MigrateUp();

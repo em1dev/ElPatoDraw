@@ -14,7 +14,7 @@ You can pass the `-r` to rollback 1 change.
 ```json
 {
   "ConnectionStrings": {
-    "PatoDrawDbConnection": "POSTGRESQL_CONNECTION_STRING"
+    "MetadataDbConnection": "POSTGRESQL_CONNECTION_STRING"
   }
 }
 ```

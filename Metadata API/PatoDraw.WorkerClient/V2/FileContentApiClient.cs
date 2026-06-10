@@ -1,8 +1,6 @@
-﻿using System.Net.Mime;
+﻿namespace PatoDraw.Worker.V2;
 
-namespace PatoDraw.Worker.V2;
-
-public class FileContentApiClient: IFileContentApiClient
+public class FileContentApiClient : IFileContentApiClient
 {
     private const int VERSION = 2;
 
@@ -32,7 +30,7 @@ public class FileContentApiClient: IFileContentApiClient
     public async Task DeleteFile(Guid fileId, CancellationToken cancellationToken)
     {
         var url = $"{_baseUrl}/{fileId}";
-        var request = new HttpRequestMessage(HttpMethod.Delete, _baseUrl);
+        var request = new HttpRequestMessage(HttpMethod.Delete, url);
         request.Headers.Add("Authorization", _secret);
 
         var response = await _httpClient.SendAsync(request, cancellationToken);

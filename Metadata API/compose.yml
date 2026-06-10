@@ -1,0 +1,5 @@
+services:
+  draw-api:
+    build: .
+    ports:
+      - ${PORT}:8080

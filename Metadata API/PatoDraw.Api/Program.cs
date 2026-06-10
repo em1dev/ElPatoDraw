@@ -11,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services
     .AddControllers()
-    .AddJsonOptions(o => {
+    .AddJsonOptions(o =>
+    {
         o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         o.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
     });
@@ -25,13 +26,13 @@ builder.Services
     {
         if (builder.Configuration.GetValue<bool>("UseInMemoryDb"))
         {
-            c.UseInMemoryDatabase("ElPatoDraw.Table");
+            c.UseInMemoryDatabase("Metadata.Table");
         }
         else
         {
-            c.UseNpgsql(builder.Configuration.GetConnectionString("PatoDrawDbConnection"));
+            c.UseNpgsql(builder.Configuration.GetConnectionString("MetadataDbConnection"));
         }
-    } 
+    }
     );
 
 
@@ -43,7 +44,7 @@ if (workerBaseUrl == null)
 
 // v1
 var workerHttpClient = new HttpClient();
-builder.Services.AddScoped<IWorkerClient, WorkerClient>(c => 
+builder.Services.AddScoped<IWorkerClient, WorkerClient>(c =>
     new WorkerClient(workerHttpClient, workerBaseUrl)
 );
 
@@ -53,7 +54,7 @@ var fileContentApiSecret = builder.Configuration.GetValue<string>("WorkerApiSecr
 if (fileContentApiSecret == null)
     throw new Exception("Missing file content api secret in appsettings");
 
-builder.Services.AddScoped<IFileContentApiClient, FileContentApiClient>(c => 
+builder.Services.AddScoped<IFileContentApiClient, FileContentApiClient>(c =>
     new FileContentApiClient(workerHttpClient, workerBaseUrl, fileContentApiSecret)
 );
 
@@ -66,7 +67,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(b => 
+app.UseCors(b =>
     b
     .AllowAnyOrigin()
     .AllowAnyHeader()
@@ -76,6 +77,5 @@ app.UseCors(b =>
 app.UseMiddleware<AuthorizationMiddleware>();
 
 app.MapControllers();
-
 
 app.Run();

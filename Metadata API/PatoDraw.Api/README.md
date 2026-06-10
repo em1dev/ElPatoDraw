@@ -15,7 +15,7 @@ Bellow is an example format for the appsettings.json file.
 {
   "UseInMemoryDb":  false,
   "ConnectionStrings": {
-    "PatoDrawDbConnection": "POSTGRESQL_CONNECTION_STRING"
+    "MetadataDbConnection": "POSTGRESQL_CONNECTION_STRING"
   },
   "Logging": {
     "LogLevel": {
