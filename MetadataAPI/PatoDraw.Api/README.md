@@ -23,6 +23,7 @@ Bellow is an example format for the appsettings.json file.
       "Microsoft.AspNetCore": "Warning"
     }
   },
+  "MediatRLicense": "MediatR_LICENSE_KEY",
   "AllowedHosts": "*",
   "WorkerApiUrl": "FILE_WORKER_API",
   "Authorization": {

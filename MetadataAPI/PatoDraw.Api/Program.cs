@@ -36,7 +36,11 @@ builder.Services
     );
 
 
-builder.Services.AddMediatR(c => c.RegisterServicesFromAssemblyContaining<FolderController>());
+builder.Services.AddMediatR(c =>
+{
+    c.LicenseKey = builder.Configuration.GetValue<string>("MediatRLicense");
+    c.RegisterServicesFromAssemblyContaining<FolderController>();
+});
 
 var workerBaseUrl = builder.Configuration.GetValue<string>("WorkerApiUrl");
 if (workerBaseUrl == null)
