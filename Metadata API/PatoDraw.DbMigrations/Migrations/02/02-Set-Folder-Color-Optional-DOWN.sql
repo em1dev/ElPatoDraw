@@ -1,5 +1,0 @@
-ALTER TABLE "File" DROP "Color";
-
-ALTER TABLE "Folder" ALTER COLUMN "Color" SET NOT NULL;
-
-
