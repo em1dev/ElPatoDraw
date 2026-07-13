@@ -1,3 +1,5 @@
+name: draw-metadata-backend
+
 services:
   draw-api:
     build: .

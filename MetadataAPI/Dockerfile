@@ -9,6 +9,9 @@ RUN dotnet publish
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /App
 
+RUN apt-get update
+RUN apt-get install -y curl
+
 COPY --from=build /App/PatoDraw.Api/bin/Release/net10.0/publish/ ./Api
 COPY --from=build /App/PatoDraw.DbMigrations/bin/Release/net10.0/publish/ ./DbMigrations
 
