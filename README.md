@@ -8,9 +8,9 @@
   />
 </p>
 
-<p style="font-size: 2em; font-weight: bold" align="center">
+<h1 style="font-size: 2em; font-weight: bold" align="center">
   El Pato Draw
-</p>
+</h1>
 
 <p align="center">
   A online whiteboard with support for multiple files.
