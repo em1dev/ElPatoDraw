@@ -36,6 +36,8 @@ builder.Services
     );
 
 
+builder.Services.AddHealthChecks();
+
 builder.Services.AddMediatR(c =>
 {
     c.LicenseKey = builder.Configuration.GetValue<string>("MediatRLicense");
@@ -77,6 +79,8 @@ app.UseCors(b =>
     .AllowAnyHeader()
     .AllowAnyMethod()
 );
+
+app.UseHealthChecks("/health");
 
 app.UseMiddleware<AuthorizationMiddleware>();
 
