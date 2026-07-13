@@ -17,14 +17,18 @@
 </p>
 
 <p align="center">
-  <img
-    alt="API Status Badge"
-    src="https://uptime.emy.dev/api/badge/1/status?label=API%20Status"
-  />
-  <img
-    alt="UI Status Badge"
-    src="https://uptime.emy.dev/api/badge/3/status?label=UI%20Status"
-  />
+  <a target="_blank href="https://uptime.emy.dev/status/draw">
+    <img
+      alt="API Status Badge"
+      src="https://uptime.emy.dev/api/badge/1/status?label=API%20Status"
+    />
+  </a>
+  <a target="_blank href="https://uptime.emy.dev/status/draw">
+    <img
+      alt="UI Status Badge"
+      src="https://uptime.emy.dev/api/badge/3/status?label=UI%20Status"
+    />
+  </a>
 <p>
 
 <p align="center">
