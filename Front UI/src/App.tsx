@@ -46,6 +46,7 @@ function App() {
 
             <Auth
               providers={['twitch']}
+              redirectTo={location.origin}
               supabaseClient={AuthenticationApi.supabaseClient}
               appearance={{
                 theme: ThemeSupa
