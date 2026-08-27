@@ -1,11 +1,9 @@
 import { HomePage } from './Pages/HomePage';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { AuthenticationApi } from '@Api/AuthenticationApi';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from './theme';
 import { DomainChangeWarningModal } from './Pages/HomePage/DomainChangeWarningModal';
-import { DefaultColorStyle, Tldraw } from 'tldraw';
+import { Login } from './Pages/HomePage/Login';
 
 function App() {
   const { isLoading, session } = AuthenticationApi.useSession();
@@ -15,47 +13,7 @@ function App() {
   if (!session) {
     return (
       <ThemeProvider theme={mainTheme} >
-        <div style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          top: 0
-        }} >
-          <Tldraw
-            inferDarkMode
-            hideUi
-            onMount={(e) => {
-              e.setStyleForNextShapes(DefaultColorStyle, 'light-violet');
-              e.setCurrentTool('draw');
-            }}
-          />
-        </div>
-        <DomainChangeWarningModal />
-        <div>
-          <div style={{
-            zIndex: 1,
-            position: 'relative',
-            height: '50vh',
-            maxWidth: '30em',
-            width: '100%',
-            margin: 'auto'
-          }} >
-            <h1 style={{ fontSize: '3em', fontWeight: 'bold', textAlign: 'center', margin: '1em' }}>
-              El Pato Draw
-            </h1>
-
-            <Auth
-              providers={['twitch']}
-              redirectTo={location.origin}
-              supabaseClient={AuthenticationApi.supabaseClient}
-              appearance={{
-                theme: ThemeSupa
-              }}
-              theme='dark'
-            >
-            </Auth>
-          </div>
-        </div>
+        <Login />
       </ThemeProvider>
     );
   }

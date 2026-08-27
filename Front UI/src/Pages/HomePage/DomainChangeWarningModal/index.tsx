@@ -5,7 +5,7 @@ const OLD_DOMAIN = 'elpatodraw.com';
 
 export const DomainChangeWarningModal = () => {
   const [hasConfirmed, setHasConfirmed] = useState(false);
-  
+
   if (location.hostname != OLD_DOMAIN) return null;
 
   return (
@@ -28,10 +28,10 @@ export const DomainChangeWarningModal = () => {
         <p>Don&apos;t worry you won&apos;t lose any of your data.</p>
 
         <div>
-          <input 
+          <input
             id='old-domain-confirmation-checkbox'
-            checked={hasConfirmed} 
-            onChange={(e) => setHasConfirmed(e.target.checked)} 
+            checked={hasConfirmed}
+            onChange={(e) => setHasConfirmed(e.target.checked)}
             type='checkbox'
           />
 
@@ -42,7 +42,7 @@ export const DomainChangeWarningModal = () => {
           </label>
         </div>
 
-        <button 
+        <button
           onClick={() => { location.replace('https://draw.elpato.dev'); }}
           disabled={!hasConfirmed}>Redirect to new domain
         </button>
